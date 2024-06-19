@@ -149,12 +149,12 @@ export function ab2str(buf: ArrayBuffer, encoding: string = 'hex') {
   return Buffer.from(buf).toString(encoding);
 }
 
-export function validateString(str: any, name?: string): str is string {
+export function validateString(str: string, name?: string): string {
   const isString = typeof str === 'string';
-  if (isString) {
+  if (!isString) {
     throw new Error(`${name} is not a string`);
   }
-  return isString;
+  return str;
 }
 
 export function validateFunction(f: any): f is Function {
